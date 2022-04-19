@@ -87,3 +87,4 @@ end
 
 puts teste_e_design.categoria
 puts teste_e_design.valor
+
