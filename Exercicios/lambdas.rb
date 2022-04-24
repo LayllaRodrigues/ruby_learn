@@ -43,4 +43,4 @@ def proc_com_return
   puts proc_com_return
   puts lambda_com_return
 
-  
+  #ambdas se parecem mais com métodos, onde existe checagem do número parâmetros e não sobrescrevem o return defi- nido no método que os invocaram. Existe apenas um caso onde é necessário obri- gatoriamente invocar um método passando uma instância de lambda e não um instância de proc.
