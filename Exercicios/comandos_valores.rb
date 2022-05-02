@@ -11,3 +11,12 @@ else valor = 3
 end
 
 p valor # => 2
+
+# Porém o código acima pode ficar mais legível se aproveitarmos o poder da lin-
+# guagem Ruby de avaliar tudo como uma expressão:
+
+numero = "dois"
+valor = if numero == "um" then 1
+            elsif numero == "dois" then 2
+else 3 end
+p valor # => 2
