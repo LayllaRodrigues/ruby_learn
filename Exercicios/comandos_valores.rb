@@ -20,3 +20,11 @@ valor = if numero == "um" then 1
             elsif numero == "dois" then 2
 else 3 end
 p valor # => 2
+
+# Até mesmo quando utilizamos um for, o seu resultado é uma expressão. Se percorrermos um Array com três elementos usando um for e multiplicarmos cada item por 2, por exemplo, podemos atribuir seu resultado a uma variável:
+
+numeros = [1, 2, 3, 4]
+novos_numeros = for n in numeros
+n*2 end
+p novos_numeros # => [1, 2, 3, 4]
+
