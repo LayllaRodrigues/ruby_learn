@@ -51,11 +51,18 @@ class Biblioteca
     end
 
     def livros
-        @livros.values.flatten #Criando nossa própria implementação do método livros, conseguimos man- ter o mesmo comportamento anterior, quando retornávamos um array diretamente
+        @livros.values.flatten #Criando nossa própria implementação do método livros, conseguimos manter o mesmo comportamento anterior, quando retornávamos um array diretamente
     #SOBRE:
-    #Quando precisamos obter todos os valores de um determinado hash, indepen- dente do container, utilizamos o método values (que retorna todos os valores do hash dentro de um Array)
+    #Quando precisamos obter todos os valores de um determinado hash, independente do container, utilizamos o método values (que retorna todos os valores do hash dentro de um Array)
     end
 
+    def livros_por_categoria(categoria)
+        @livros[categoria].each do |livro|
+            yield livro if block_given?
+        end
+
+        # O método block_given? verifica se algum bloco foi passado como argumento na chamada do método e retorna um valor booleano. Em nosso exemplo, caso algum bloco seja passado, o executamos, caso contrário o método yield não será invocado.
+    end
 end
 
 biblioteca = Biblioteca.new
@@ -63,12 +70,16 @@ biblioteca = Biblioteca.new
 teste_e_design = Livro.new "Mauricio Aniche", "123454", 247, 70.5, :teste
 web_design_responsivo = Livro.new "Tárcio Zemel", "452565", 189, 67.9, :web_design
 
+biblioteca.livros_por_categoria :testes do |livro|
+    p livro.autor
+end
+
+# Quando executamos o método livros_por_categoria passamos um Symbol :testes que representa a categoria de livros que desejamos filtrar e tam- bém um bloco de código que recebe na variável livro declarada dentro dos carac- teres || cada um dos objetos existentes para a categoria filtrad
+
 hash = {"123454" => web_design_responsivo , 
         "452565" => web_design_responsivo}
 
 # puts hash["123454"]
-
-
 
 biblioteca.adiciona teste_e_design
 biblioteca.adiciona web_design_responsivo
